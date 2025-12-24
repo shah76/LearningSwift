@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public enum Theme: String, CaseIterable, Identifiable, Codable {
+public enum ThemeX: String, CaseIterable, Identifiable, Codable {
 
     case bubblegum
     case buttercup
@@ -57,9 +57,9 @@ public enum Theme: String, CaseIterable, Identifiable, Codable {
 }
 
 func testTheme() {
-    let a = Theme.bubblegum.accentColor
-    let x = Theme.bubblegum.mainColor
-    let n = Theme.bubblegum.name
-    let i = Theme.bubblegum.id
+    let a = ThemeX.bubblegum.accentColor
+    let x = ThemeX.bubblegum.mainColor
+    let n = ThemeX.bubblegum.name
+    let i = ThemeX.bubblegum.id
     print(a, x, n, i)
 }
