@@ -26,8 +26,9 @@ struct LearningSwiftApp: App {
 
     var body: some Scene {
         WindowGroup {
-            #if false
-                ContentView()
+            #if true
+            ScrumsView(scrums: DailyScrum.sampleData)
+                //ContentView()
             #else
                 ViewStateBinding(hasError: $showingAlert)
                     .alert("error", isPresented: $showingAlert) {
