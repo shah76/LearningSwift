@@ -13,6 +13,8 @@ struct LearningSwiftApp: App {
     // 1. A state variable to control the alert's visibility
     @State private var showingAlert = false
     
+    @State private var scrums = DailyScrum.sampleData
+    
     init() {
       do {
         Logger.viewCycle.log("LearningSwiftApp")
@@ -27,7 +29,7 @@ struct LearningSwiftApp: App {
     var body: some Scene {
         WindowGroup {
             #if true
-            ScrumsView(scrums: DailyScrum.sampleData)
+            ScrumsView(scrums: $scrums)
                 //ContentView()
             #else
                 ViewStateBinding(hasError: $showingAlert)
