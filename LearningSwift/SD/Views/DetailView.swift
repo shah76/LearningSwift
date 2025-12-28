@@ -1,23 +1,21 @@
-//
-//  DetailView.swift
-//  LearningSwift
-//
-//  Created by haroon shah on 12/24/25.
-//
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
 
 import SwiftUI
+import SwiftData
 import ThemeKit
 
 struct DetailView: View {
-    @Binding var scrum: DailyScrum
-    
-    @State private var editingScrum = DailyScrum.emptyScrum
+    let scrum: DailyScrum
+
     @State private var isPresentingEditView = false
+    @State private var errorWrapper: ErrorWrapper?
     
     var body: some View {
         List {
             Section(header: Text("Meeting Info")) {
-                NavigationLink(destination: MeetingView()) {
+                NavigationLink(destination: MeetingView(scrum: scrum, errorWrapper: $errorWrapper)) {
                     Label("Start Meeting", systemImage: "timer")
                         .font(.headline)
                         .foregroundColor(.accentColor)
@@ -33,7 +31,8 @@ struct DetailView: View {
                     Spacer()
                     Text(scrum.theme.name)
                         .padding(4)
-                        .foregroundColor(scrum.theme.mainColor)
+                        .foregroundColor(scrum.theme.accentColor)
+                        .background(scrum.theme.mainColor)
                         .cornerRadius(4)
                 }
                 .accessibilityElement(children: .combine)
@@ -43,39 +42,41 @@ struct DetailView: View {
                     Label(attendee.name, systemImage: "person")
                 }
             }
+            Section(header: Text("History")) {
+                if scrum.history.isEmpty {
+                    Label("No meetings yet", systemImage: "calendar.badge.exclamationmark")
+                }
+                ForEach(scrum.history) { history in
+                    NavigationLink(destination: HistoryView(history: history)) {
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text(history.date, style: .date)
+                        }
+                    }
+                }
+            }
         }
         .navigationTitle(scrum.title)
         .toolbar {
             Button("Edit") {
                 isPresentingEditView = true
-                editingScrum = scrum
             }
         }
         .sheet(isPresented: $isPresentingEditView) {
             NavigationStack {
-                DetailEditView(scrum: $editingScrum)
+                DetailEditView(scrum: scrum)
                     .navigationTitle(scrum.title)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") {
-                                isPresentingEditView = false
-                            }
-                        }
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Done") {
-                                isPresentingEditView = false
-                                scrum = editingScrum
-                            }
-                        }
-                    }
             }
+        }
+        .sheet(item: $errorWrapper, onDismiss: nil) { wrapper in
+            ErrorView(errorWrapper: wrapper)
         }
     }
 }
 
-#Preview {
-    @Previewable @State var scrum = DailyScrum.sampleData[0]
+#Preview(traits: .dailyScrumsSampleData) {
+    @Previewable @Query(sort: \DailyScrum.title) var scrums: [DailyScrum]
     NavigationStack {
-        DetailView(scrum: $scrum)
+        DetailView(scrum: scrums[0])
     }
 }

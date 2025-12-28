@@ -1,9 +1,6 @@
-//
-//  ThemePicker.swift
-//  LearningSwift
-//
-//  Created by haroon shah on 12/25/25.
-//
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
 
 import SwiftUI
 import ThemeKit

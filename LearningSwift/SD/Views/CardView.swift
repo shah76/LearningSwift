@@ -1,13 +1,9 @@
-//
-//  CardView.swift
-//  LearningSwift
-//
-//  Created by haroon shah on 12/23/25.
-//
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
+
 import SwiftUI
-
 import ThemeKit
-
 
 struct CardView: View {
     let scrum: DailyScrum
@@ -32,9 +28,7 @@ struct CardView: View {
         .foregroundColor(scrum.theme.accentColor)
     }
 }
-/*
- In a SwiftUI #Preview closure, you don’t need to use return if the closure consists of a single expression. Swift allows implicit returns in single-expression closures, and SwiftUI previews are just closures that produce a View.
- */
+
 #Preview(traits: .fixedLayout(width: 400, height: 60)) {
     let scrum = DailyScrum.sampleData[0]
     return CardView(scrum: scrum)

@@ -1,13 +1,9 @@
-//
-//  Scrum+Sample.swift
-//  LearningSwift
-//
-//  Created by haroon shah on 12/23/25.
-//
+/*
+ See LICENSE folder for this sample’s licensing information.
+ */
 
 import Foundation
 import ThemeKit
-
 
 extension DailyScrum {
     static let sampleData: [DailyScrum] =
@@ -26,5 +22,3 @@ extension DailyScrum {
                    theme: .poppy)
     ]
 }
-
-

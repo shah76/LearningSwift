@@ -7,9 +7,12 @@
 
 import SwiftUI
 import OSLog
+import SwiftData
 
 @main
 struct LearningSwiftApp: App {
+    
+    
     // 1. A state variable to control the alert's visibility
     @State private var showingAlert = false
     
@@ -20,16 +23,16 @@ struct LearningSwiftApp: App {
         Logger.viewCycle.log("LearningSwiftApp")
         runAllMyLib()
         testTheme()
-  #if DEBUG
-        NSLog("Hello DEBUG defined")
-  #endif
+  //#if DEBUG
+  //      NSLog("Hello DEBUG defined")
+  //#endif
       }
     }
 
     var body: some Scene {
         WindowGroup {
             #if true
-            ScrumsView(scrums: $scrums)
+            ScrumsView()
                 //ContentView()
             #else
                 ViewStateBinding(hasError: $showingAlert)
@@ -41,5 +44,6 @@ struct LearningSwiftApp: App {
                 AllThree()
             #endif
         }
+        .modelContainer(for: DailyScrum.self)
     }
 }
