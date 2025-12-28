@@ -19,30 +19,37 @@ struct LearningSwiftApp: App {
     @State private var scrums = DailyScrum.sampleData
     
     init() {
-      do {
-        Logger.viewCycle.log("LearningSwiftApp")
-        runAllMyLib()
-        testTheme()
-  //#if DEBUG
-  //      NSLog("Hello DEBUG defined")
-  //#endif
-      }
+        do {
+#if NOLEARN
+            Logger.viewCycle.log("LEARN")
+#else
+            Logger.viewCycle.log("NOLEARN")
+#endif
+#if LEARN
+            Logger.viewCycle.log("LearningSwiftApp")
+            runAllMyLib()
+            testTheme()
+#endif
+            //#if DEBUG
+            //      NSLog("Hello DEBUG defined")
+            //#endif
+        }
     }
-
+    
     var body: some Scene {
         WindowGroup {
-            #if true
+#if true
             ScrumsView()
-                //ContentView()
-            #else
-                ViewStateBinding(hasError: $showingAlert)
-                    .alert("error", isPresented: $showingAlert) {
-                        Button("Test") {
-                            print("test")  // Action returns Void
-                        }
+            //ContentView()
+#else
+            ViewStateBinding(hasError: $showingAlert)
+                .alert("error", isPresented: $showingAlert) {
+                    Button("Test") {
+                        print("test")  // Action returns Void
                     }
-                AllThree()
-            #endif
+                }
+            AllThree()
+#endif
         }
         .modelContainer(for: DailyScrum.self)
     }

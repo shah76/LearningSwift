@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E28DC8162F010FC20033D76E /* TimerKit in Frameworks */ = {isa = PBXBuildFile; productRef = E28DC8152F010FC20033D76E /* TimerKit */; };
+		E28DC8192F010FD20033D76E /* TranscriptionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E28DC8182F010FD20033D76E /* TranscriptionKit */; };
 		E2B840072EFBC29D007F47FE /* ThemeKit in Frameworks */ = {isa = PBXBuildFile; productRef = E2B840062EFBC29D007F47FE /* ThemeKit */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +30,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2B840072EFBC29D007F47FE /* ThemeKit in Frameworks */,
+				E28DC8162F010FC20033D76E /* TimerKit in Frameworks */,
+				E28DC8192F010FD20033D76E /* TranscriptionKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +75,8 @@
 			name = LearningSwift;
 			packageProductDependencies = (
 				E2B840062EFBC29D007F47FE /* ThemeKit */,
+				E28DC8152F010FC20033D76E /* TimerKit */,
+				E28DC8182F010FD20033D76E /* TranscriptionKit */,
 			);
 			productName = LearningSwift;
 			productReference = E2BB9C392EF8FDD2008B3832 /* LearningSwift.app */;
@@ -101,7 +107,9 @@
 			mainGroup = E2BB9C302EF8FDD2008B3832;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				E2B840052EFBC29D007F47FE /* XCLocalSwiftPackageReference "../../MWHelloGlasses/CreatingACardView/StartingProject/TutorialResources/ThemeKit" */,
+				E28DC8132F010FA70033D76E /* XCLocalSwiftPackageReference "MWpacakages/ThemeKit" */,
+				E28DC8142F010FC20033D76E /* XCLocalSwiftPackageReference "MWpacakages/TimerKit" */,
+				E28DC8172F010FD20033D76E /* XCLocalSwiftPackageReference "MWpacakages/TranscriptionKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E2BB9C3A2EF8FDD2008B3832 /* Products */;
@@ -284,6 +292,7 @@
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = LEARN;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -362,13 +371,29 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		E2B840052EFBC29D007F47FE /* XCLocalSwiftPackageReference "../../MWHelloGlasses/CreatingACardView/StartingProject/TutorialResources/ThemeKit" */ = {
+		E28DC8132F010FA70033D76E /* XCLocalSwiftPackageReference "MWpacakages/ThemeKit" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../MWHelloGlasses/CreatingACardView/StartingProject/TutorialResources/ThemeKit;
+			relativePath = MWpacakages/ThemeKit;
+		};
+		E28DC8142F010FC20033D76E /* XCLocalSwiftPackageReference "MWpacakages/TimerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = MWpacakages/TimerKit;
+		};
+		E28DC8172F010FD20033D76E /* XCLocalSwiftPackageReference "MWpacakages/TranscriptionKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = MWpacakages/TranscriptionKit;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E28DC8152F010FC20033D76E /* TimerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TimerKit;
+		};
+		E28DC8182F010FD20033D76E /* TranscriptionKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TranscriptionKit;
+		};
 		E2B840062EFBC29D007F47FE /* ThemeKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ThemeKit;
